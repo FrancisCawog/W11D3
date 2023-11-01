@@ -8,29 +8,24 @@ function CartItem({ item }) {
   const dispatch = useDispatch();
 
   const removeItem = e => {
-    e.preventDefault(); 
-
-    const produceItem = item.id 
-
-    dispatch(removeCart(produceItem))
+    e.preventDefault();
+    const produceItem = item.id;
+    dispatch(removeCart(produceItem));
   }
 
-  const incItem = e => {
-    e.preventDefault();
-    setCount(item.count + 1);
+  const incItem = () => {
+    setCount(count + 1);
   }
 
-  const decItem = e => {
-    e.preventDefault();
-
-    setCount(item.count - 1);
+  const decItem = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
   }
 
   useEffect(() => {
     setCount(item.count);
   }, [item.count]);
-  
-
 
   return (
     <li className="cart-item">
