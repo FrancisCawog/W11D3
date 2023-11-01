@@ -15,10 +15,21 @@ function CartItem({ item }) {
     dispatch(removeCart(produceItem))
   }
 
+  const incItem = e => {
+    e.preventDefault();
+    setCount(item.count + 1);
+  }
+
+  const decItem = e => {
+    e.preventDefault();
+
+    setCount(item.count - 1);
+  }
 
   useEffect(() => {
     setCount(item.count);
   }, [item.count]);
+  
 
 
   return (
@@ -30,12 +41,12 @@ function CartItem({ item }) {
           value={count}
         />
         <button
-          className="cart-item-button"
+          className="cart-item-button" onClick={incItem}
         >
           +
         </button>
         <button
-          className="cart-item-button"
+          className="cart-item-button" onClick={decItem}
         >
           -
         </button>

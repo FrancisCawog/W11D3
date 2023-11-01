@@ -22,9 +22,11 @@ const cartReducer = (state = {}, action) => {
     let newObj = {}
     switch(action.type) {
         case RECEIVE_CART:
+            const existingItem = state[action.produceId];
+            const newCount = existingItem ? existingItem.count + 1 : 1
                 newObj = {
                 ...oldObj,
-                [action.produceId]: { id: action.produceId, count: 1}
+                [action.produceId]: { id: action.produceId, count: newCount}
               };
             return newObj;
             case REMOVE_CART:
